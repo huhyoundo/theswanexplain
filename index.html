@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SWAN | PLASTIC SURGERY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0F0F12;
+            --text-main: #EAEAEA;
+            --gold: #D4AF37;
+            --gold-dim: #8A7224;
+            --hover-transition: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* Custom cursor */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow-x: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, background-color 0.3s;
+            mix-blend-mode: difference;
+        }
+
+        .cursor.hovered {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(212, 175, 55, 0.2);
+            border-color: transparent;
+        }
+
+        .cursor-point {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 4px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Background Noise/Grain */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9000;
+            opacity: 0.03;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Header */
+        header {
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.2em;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Main Menu */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2vh;
+        }
+
+        .menu-item {
+            position: relative;
+            text-decoration: none;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 7vw, 7rem);
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            transition: all 0.6s var(--hover-transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-item::before {
+            content: attr(data-text);
+            position: absolute;
+            color: var(--gold);
+            width: 0%;
+            overflow: hidden;
+            transition: width 0.5s var(--hover-transition);
+            white-space: nowrap;
+            border-right: 2px solid transparent; /* Typewriter cursor effect base */
+        }
+
+        .menu-item:hover {
+            -webkit-text-stroke: 1px rgba(212, 175, 55, 0.1);
+        }
+
+        .menu-item:hover::before {
+            width: 100%;
+            border-right-color: var(--text-main);
+        }
+
+        .menu-number {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 0.8rem;
+            color: var(--gold);
+            position: absolute;
+            top: 20%;
+            left: -30px;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.4s var(--hover-transition);
+        }
+
+        .menu-item:hover .menu-number {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Background Visuals specific to hover */
+        .bg-visual {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            filter: grayscale(100%) brightness(0.4) contrast(1.2);
+            z-index: -1;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.05em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            pointer-events: none;
+        }
+
+        .footer-credit span {
+            color: var(--gold);
+        }
+
+        /* Floating elements */
+        .deco-line {
+            position: absolute;
+            width: 1px;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, var(--gold-dim), transparent);
+            left: 10%;
+            top: 20%;
+            opacity: 0.3;
+        }
+        
+        .deco-circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            right: -50px;
+            bottom: -50px;
+            animation: rotate 60s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="cursor"></div>
+    <div class="cursor-point"></div>
+    <div class="noise"></div>
+
+    <div class="deco-line"></div>
+    <div class="deco-circle"></div>
+
+    <header>
+        <a href="#" class="logo">THE SWAN</a>
+        <div style="display: flex; align-items: center; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gold);">
+            <span class="status-dot"></span> SURGERY MENU
+        </div>
+    </header>
+
+    <main>
+        <nav class="menu-container">
+            <a href="theswan_surgery.html" class="menu-item" data-text="CAT BOX × PONYTAIL">
+                <span class="menu-number">01</span>
+                CAT BOX × PONYTAIL
+                <!-- 고양이쌍재*포니테일 -->
+            </a>
+            
+            <a href="theswan_lateral.html#start" class="menu-item" data-text="BACK ANGLE TRANS">
+                <span class="menu-number">02</span>
+                BACK ANGLE TRANS
+                <!-- 뒷각도전환 -->
+            </a>
+
+            <a href="theswan_lateral.html#extension" class="menu-item" data-text="BACK EXTENSION">
+                <span class="menu-number">03</span>
+                BACK EXTENSION
+                <!-- 뒤연장술 -->
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="footer-desc">
+            AESTHETIC PLASTIC SURGERY<br>
+            SEOUL, KOREA
+        </div>
+        <div class="footer-credit">
+            DESIGNED BY <span>ANTIGRAVITY</span>
+        </div>
+    </footer>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorPoint = document.querySelector('.cursor-point');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorPoint.style.left = e.clientX + 'px';
+            cursorPoint.style.top = e.clientY + 'px';
+        });
+
+        menuItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                cursor.classList.add('hovered');
+            });
+            item.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hovered');
+            });
+        });
+
+        // Add Korean Subtitles dynamically or keep them clean in English as per "Hip" conventions?
+        // User requested "메뉴 이름 각 고양이쌍재*포니테일, 뒷각도전환,뒤연장술".
+        // To make it "Hip", I used English for the big typography but I should add the Korean text as a subtitle or hover effect to fully satisfy the request. 
+        // Let's modify the DOM to include Korean text elegantly.
+
+        const koreanMap = {
+            "CAT BOX × PONYTAIL": "고양이쌍재 × 포니테일",
+            "BACK ANGLE TRANS": "뒷각도전환",
+            "BACK EXTENSION": "뒤연장술"
+        };
+
+        menuItems.forEach(item => {
+            const engText = item.getAttribute('data-text');
+            const koText = koreanMap[engText];
+            
+            const sub = document.createElement('div');
+            sub.textContent = koText;
+            sub.style.cssText = `
+                position: absolute;
+                bottom: -20px;
+                font-family: 'Noto Serif KR', serif;
+                font-size: 0.9rem;
+                color: var(--text-main);
+                opacity: 0;
+                transform: translateY(-10px);
+                transition: all 0.4s ease 0.1s;
+                letter-spacing: 0.1em;
+                pointer-events: none;
+                font-weight: 300;
+            `;
+            item.appendChild(sub);
+
+            item.addEventListener('mouseenter', () => {
+                sub.style.opacity = '0.7';
+                sub.style.transform = 'translateY(0)';
+            });
+            item.addEventListener('mouseleave', () => {
+                sub.style.opacity = '0';
+                sub.style.transform = 'translateY(-10px)';
+            });
+        });
+
+    </script>
+</body>
+</html>

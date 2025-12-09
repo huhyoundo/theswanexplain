@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>더스완성형외과 | 고양이쌍재 + 포니테일 수술</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold-light: #D4AF37;
+            --gold-dark: #B8960C;
+            --champagne: #F7E7CE;
+            --cream: #FFFEF7;
+            --charcoal: #2C2C2C;
+            --warm-gray: #6B6B6B;
+            --soft-beige: #F5F1EB;
+            --border-gold: rgba(212, 175, 55, 0.3);
+            --navy-dark: #1a1a2e;
+            --navy-mid: #16213e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f1a 100%);
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.5; }
+        }
+
+        .logo-mark {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            color: #fff;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.1rem;
+            color: var(--gold-light);
+            letter-spacing: 0.3em;
+            margin-top: 25px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-desc {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 500px;
+            line-height: 1.9;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            color: var(--gold-dark);
+            letter-spacing: 0.3em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-gold);
+            max-width: 100px;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .section-content {
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+
+        .section-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Surgery Cards */
+        .surgery-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .surgery-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .surgery-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 2px;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+
+        .surgery-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-light), var(--gold-dark));
+        }
+
+        .surgery-card-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.7rem;
+            color: var(--gold-dark);
+            letter-spacing: 0.2em;
+            margin-bottom: 10px;
+        }
+
+        .surgery-card-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.3rem;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+
+        .surgery-card-subtitle {
+            font-size: 0.85rem;
+            color: var(--gold-dark);
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-gold);
+        }
+
+        .surgery-card-content {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            line-height: 1.9;
+        }
+
+        .surgery-card-points {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .surgery-card-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.88rem;
+            color: var(--charcoal);
+        }
+
+        .surgery-card-point::before {
+            content: '◆';
+            font-size: 0.5rem;
+            color: var(--gold-light);
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        /* Principle Box */
+        .principle-box {
+            background: #fff;
+            padding: 50px;
+            border-radius: 2px;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .principle-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--gold-light), var(--gold-dark));
+        }
+
+        .principle-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--gold-light);
+            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+
+        .principle-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .principle-content {
+            font-size: 0.92rem;
+            color: var(--warm-gray);
+            line-height: 1.9;
+            padding-left: 40px;
+        }
+
+        .principle-divider {
+            height: 1px;
+            background: var(--border-gold);
+            margin: 30px 0;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy-mid));
+            color: var(--gold-light);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1rem;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .step-content p {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            line-height: 1.8;
+        }
+
+        /* Analogy Box */
+        .analogy-box {
+            background: linear-gradient(135deg, var(--soft-beige), #f0ebe3);
+            padding: 40px;
+            border-radius: 2px;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .analogy-box::before {
+            content: '"';
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            color: var(--gold-light);
+            opacity: 0.4;
+            position: absolute;
+            top: 10px;
+            left: 25px;
+            line-height: 1;
+        }
+
+        .analogy-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            color: var(--gold-dark);
+            letter-spacing: 0.2em;
+            margin-bottom: 15px;
+        }
+
+        .analogy-content {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            line-height: 2;
+            padding-left: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table thead {
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy-mid));
+        }
+
+        .comparison-table th {
+            color: #fff;
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 400;
+            padding: 18px 20px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table th:first-child {
+            color: var(--gold-light);
+        }
+
+        .comparison-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--warm-gray);
+            background: #fff;
+        }
+
+        .comparison-table td:first-child {
+            font-family: 'Noto Serif KR', serif;
+            color: var(--charcoal);
+            background: var(--soft-beige);
+        }
+
+        .comparison-table tbody tr:hover td {
+            background: #fafaf8;
+        }
+
+        .comparison-table tbody tr:hover td:first-child {
+            background: #ebe6de;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--soft-beige);
+            padding: 30px 35px;
+            margin: 30px 0;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 50px;
+            background: var(--gold-light);
+        }
+
+        .highlight-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            margin-bottom: 15px;
+        }
+
+        .highlight-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            line-height: 1.7;
+        }
+
+        .highlight-item::before {
+            content: '◆';
+            font-size: 0.5rem;
+            color: var(--gold-light);
+            flex-shrink: 0;
+            position: relative;
+            top: -2px;
+        }
+
+        .highlight-item-title {
+            font-weight: 500;
+            color: var(--charcoal);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .highlight-item-title::after {
+            content: '—';
+            margin-left: 10px;
+            color: var(--border-gold);
+            font-weight: 300;
+        }
+
+        .highlight-item-desc {
+            color: var(--warm-gray);
+        }
+
+        .highlight-item-simple {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            line-height: 1.7;
+        }
+
+        .highlight-item-simple::before {
+            content: '◆';
+            font-size: 0.5rem;
+            color: var(--gold-light);
+            flex-shrink: 0;
+            position: relative;
+            top: 5px;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .faq-item {
+            background: #fff;
+            padding: 35px 40px;
+            border-radius: 2px;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .faq-question {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.05rem;
+            color: var(--charcoal);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .faq-question::before {
+            content: 'Q';
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--gold-dark);
+            font-weight: 500;
+        }
+
+        .faq-answer {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            line-height: 1.9;
+            padding-left: 24px;
+        }
+
+        /* Closing Section */
+        .closing-box {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
+            padding: 50px;
+            border-radius: 2px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .closing-box .section-label {
+            justify-content: center;
+            color: var(--gold-light);
+        }
+
+        .closing-box .section-label::after {
+            display: none;
+        }
+
+        .closing-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .closing-content {
+            font-size: 0.92rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #fff;
+            letter-spacing: 0.3em;
+            margin-bottom: 20px;
+        }
+
+        .footer-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--gold-light);
+            margin: 0 auto 20px;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 50px 20px;
+            }
+
+            .principle-box,
+            .surgery-card,
+            .faq-item {
+                padding: 30px 25px;
+            }
+
+            .principle-content {
+                padding-left: 0;
+                margin-top: 15px;
+            }
+
+            .comparison-table {
+                font-size: 0.8rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="logo-mark"></div>
+        <h1 class="hero-title">Cat Eyes + Ponytail</h1>
+        <p class="hero-subtitle">고양이쌍재 + 포니테일 수술</p>
+        <p class="hero-desc">외부 리프팅과 내부 구조 재설계의 시너지로<br>자연스럽고 오래 유지되는 눈매를 완성합니다</p>
+    </header>
+
+    <main class="main-content">
+
+        <!-- Why Together -->
+        <section class="section">
+            <div class="section-label">INTRODUCTION</div>
+            <h2 class="section-title">왜 두 수술을 함께 하나요?</h2>
+            <div class="section-content">
+                <p>눈꼬리 처짐을 교정하는 데는 크게 두 가지 접근법이 있습니다. 하나는 <strong>외부에서 당겨 올리는 방식(포니테일)</strong>, 다른 하나는 <strong>내부 구조를 재설계하는 방식(고양이쌍재)</strong>입니다.</p>
+                <p>각각의 수술은 단독으로도 효과가 있지만, 두 수술을 병행할 때 외부의 리프팅 효과와 내부의 구조적 안정성이 동시에 확보되어 더 자연스럽고 오래 유지되는 결과를 얻을 수 있습니다.</p>
+            </div>
+
+            <div class="surgery-cards">
+                <div class="surgery-card">
+                    <div class="surgery-card-label">EXTERNAL LIFTING</div>
+                    <h3 class="surgery-card-title">포니테일 수술</h3>
+                    <p class="surgery-card-subtitle">눈꼬리 처짐이 뚜렷한 경우</p>
+                    <div class="surgery-card-content">
+                        눈썹 끝 라인을 따라 최소한의 절개를 한 뒤, 눈꼬리 방향으로 피부와 연부조직을 위쪽으로 당겨 고정하는 수술입니다. 마치 머리를 높이 묶었을 때 눈꼬리가 살짝 올라가는 원리와 같습니다.
+                    </div>
+                    <div class="surgery-card-points">
+                        <div class="surgery-card-point">처진 눈꼬리를 물리적으로 상방 견인</div>
+                        <div class="surgery-card-point">눈매 전체의 리프팅 효과</div>
+                        <div class="surgery-card-point">절개선이 눈썹 라인에 숨겨져 흉터 최소화</div>
+                    </div>
+                </div>
+
+                <div class="surgery-card">
+                    <div class="surgery-card-label">INTERNAL REFRAME</div>
+                    <h3 class="surgery-card-title">고양이쌍재</h3>
+                    <p class="surgery-card-subtitle">섬세한 눈매 디자인이 필요한 경우</p>
+                    <div class="surgery-card-content">
+                        단순히 "당기는" 수술이 아닙니다. 눈끝을 통해 접근하여 눈매를 지탱하는 내부 프레임 자체를 재설계하는 수술입니다. 로버트 플라워 박사의 안성형 이론을 기반으로 합니다.
+                    </div>
+                    <div class="surgery-card-points">
+                        <div class="surgery-card-point">내부 인대의 긴장 벡터 방향 전환</div>
+                        <div class="surgery-card-point">5~10도 범위의 정밀한 각도 교정</div>
+                        <div class="surgery-card-point">1mm 단위 비대칭 보정</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="section">
+            <div class="section-label">SURGICAL PRINCIPLE</div>
+            <h2 class="section-title">어디에, 어떻게 고정하나요?</h2>
+            <div class="section-content">
+                <p>고객분들이 가장 많이 궁금해하시는 부분입니다.</p>
+            </div>
+
+            <div class="principle-box">
+                <div class="principle-title">
+                    <span class="principle-number">1</span>
+                    고정 위치: 안륜근에 고정합니다
+                </div>
+                <div class="principle-content">
+                    <p>더스완은 <strong>안륜근(眼輪筋, Orbicularis Oculi Muscle)</strong>에 고정합니다. 안륜근은 눈 주위를 동그랗게 감싸고 있는 근육으로, 눈을 감거나 깜빡일 때 사용되는 핵심 구조물입니다.</p>
+                </div>
+
+                <div class="highlight-box" style="margin: 25px 0 0 0;">
+                    <div class="highlight-title">왜 안륜근인가요?</div>
+                    <div class="highlight-list">
+                        <div class="highlight-item">
+                            <span class="highlight-item-title">자연스러운 움직임</span>
+                            <span class="highlight-item-desc">근육 조직에 고정하므로 눈을 깜빡이거나 표정을 지을 때 자연스럽게 따라 움직입니다</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-item-title">적절한 탄력성</span>
+                            <span class="highlight-item-desc">골막처럼 완전히 고정된 구조가 아니라 적당한 유연성이 있어, 과교정 없이 자연스러운 곡선을 유지합니다</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-item-title">부작용 최소화</span>
+                            <span class="highlight-item-desc">뼈에 직접 자극을 주지 않아 이물감, 통증, 비대칭 위험이 적습니다</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="principle-divider"></div>
+
+                <div class="principle-title">
+                    <span class="principle-number">2</span>
+                    고정 방식: 수술용 봉합사(실)로 고정합니다
+                </div>
+                <div class="principle-content">
+                    <p>내부 고정에는 <strong>흡수사(녹는 실)</strong>를 사용합니다. 체내에서 서서히 분해되어 자연스럽게 흡수되는 봉합사로, 이물질이 영구적으로 남지 않아 장기적인 부작용 우려가 적습니다. 실이 흡수되기 전에 조직 유착이 충분히 형성되어 형태가 안정적으로 유지됩니다.</p>
+                </div>
+
+                <div class="principle-divider"></div>
+
+                <div class="principle-title">
+                    <span class="principle-number">3</span>
+                    핵심 원리: 텐션 리다이렉션(Tension Redirection)
+                </div>
+                <div class="principle-content">
+                    <p>단순히 "실로 당겨서 묶는다"가 아닙니다. 눈꼬리가 처져 보이는 근본 원인은 눈 주변 인대와 조직의 <strong>긴장 방향(벡터)이 아래로 향해 있기 때문</strong>입니다. 고양이쌍재는 로버트 플라워(Robert Flowers) 박사의 안성형 이론을 기반으로, 이 하향된 긴장 벡터를 <strong>위쪽 방향으로 전환</strong>합니다.</p>
+                </div>
+
+                <div class="process-steps" style="margin-top: 30px; padding-left: 40px;">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>릴리즈 (Release)</h4>
+                            <p>눈끝을 통해 접근하여, 아래 방향으로 당기고 있던 내부 인대와 연부조직을 부분적으로 분리합니다</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>리포지셔닝 (Repositioning)</h4>
+                            <p>분리된 조직을 새로운 각도(상향)로 재배치합니다</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>앵커링 (Anchoring)</h4>
+                            <p>재배치된 조직을 안륜근에 봉합사로 고정하여 새로운 벡터 방향을 유지시킵니다</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analogy-box">
+                <div class="analogy-label">ANALOGY</div>
+                <div class="analogy-content">
+                    처진 텐트를 고친다고 생각해보세요. 단순히 천막을 위로 당겨 말뚝에 묶으면(포니테일) 팽팽해지지만, 지지대 자체가 기울어져 있으면 장력이 한쪽으로 쏠려 다시 처질 수 있습니다.<br><br>
+                    고양이쌍재는 <strong>기울어진 지지대를 분리해서 각도를 바로잡은 뒤, 탄력 있는 지지대(안륜근)에 새로 연결하는 작업</strong>입니다. 딱딱한 바닥(골막)에 고정하는 것보다 자연스러운 움직임이 가능합니다.
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison -->
+        <section class="section">
+            <div class="section-label">SYNERGY</div>
+            <h2 class="section-title">두 수술의 시너지</h2>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>포니테일</th>
+                        <th>고양이쌍재</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>접근 방식</td>
+                        <td>외부 (눈썹 끝 절개)</td>
+                        <td>내부 (눈끝 접근)</td>
+                    </tr>
+                    <tr>
+                        <td>고정 위치</td>
+                        <td>측두부 근막</td>
+                        <td>안륜근</td>
+                    </tr>
+                    <tr>
+                        <td>원리</td>
+                        <td>피부·연부조직 상방 견인</td>
+                        <td>내부 인대 벡터 전환</td>
+                    </tr>
+                    <tr>
+                        <td>강도</td>
+                        <td>강한 리프팅</td>
+                        <td>섬세한 조절</td>
+                    </tr>
+                    <tr>
+                        <td>역할</td>
+                        <td>전체적인 눈꼬리 거상</td>
+                        <td>디테일 및 구조적 안정성</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <div class="highlight-title">병행 시 장점</div>
+                <div class="highlight-list">
+                    <div class="highlight-item-simple">포니테일이 외부에서 리프팅 → 고양이쌍재가 내부에서 구조적으로 지지</div>
+                    <div class="highlight-item-simple">서로 다른 층위의 이중 고정으로 유지력 향상</div>
+                    <div class="highlight-item-simple">자연스러운 움직임과 또렷한 눈매를 동시에 확보</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section">
+            <div class="section-label">FAQ</div>
+            <h2 class="section-title">자주 묻는 질문</h2>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">실이 만져지거나 튀어나오지 않나요?</div>
+                    <div class="faq-answer">봉합사는 피부 아래 근육층에 위치하므로 외부에서 만져지거나 보이지 않습니다. 또한 매듭 부위가 조직 안쪽으로 묻히도록 처리하여 이물감이 없습니다.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">안륜근에 고정하면 눈 깜빡임에 문제가 없나요?</div>
+                    <div class="faq-answer">안륜근 전체가 아닌 외측 일부에만 고정하며, 근육의 자연스러운 수축-이완을 방해하지 않는 위치와 방식으로 봉합합니다. 오히려 근육과 함께 움직이기 때문에 표정이 자연스럽습니다.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">녹는 실이면 풀어지지 않나요?</div>
+                    <div class="faq-answer">흡수사가 완전히 분해되기까지 수개월이 소요됩니다. 그 사이 고정 부위에 자체적인 유착과 반흔 조직이 형성되어, 실이 흡수된 이후에도 형태가 안정적으로 유지됩니다. 오히려 이물질이 영구적으로 남지 않아 장기적으로 더 안전합니다.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">골막 고정과 뭐가 다른가요?</div>
+                    <div class="faq-answer">골막 고정은 뼈에 직접 고정하여 강한 유지력을 얻지만, 조직이 움직이지 않는 구조물에 묶이는 만큼 과교정, 당김감, 부자연스러운 표정 등의 위험이 있습니다. 안륜근 고정은 유지력과 자연스러움의 균형을 잡은 방식입니다.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">왜 구체적인 고정 방식은 안 알려주시나요?</div>
+                    <div class="faq-answer">릴리즈 포인트, 봉합 각도, 텐션 조절량 등 세부 테크닉은 수년간의 임상 경험을 통해 정립된 더스완 고유의 수술 설계입니다. 환자 개인별 골격 구조, 눈꺼풀 두께, 기존 수술 이력에 따라 달라집니다.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing -->
+        <div class="closing-box">
+            <div class="section-label">THE SWAN DIFFERENCE</div>
+            <h3 class="closing-title">"어디에 고정하느냐"보다 중요한 것은<br>"어떤 방향으로, 얼마만큼의 힘으로 고정하느냐"입니다</h3>
+            <p class="closing-content">
+                더스완의 고양이쌍재는 로버트 플라워 박사의 안성형 철학을 기반으로 하되, 한국인의 눈 구조와 심미안에 맞게 재해석한 수술법입니다. 이 벡터 설계가 수술 결과의 자연스러움과 유지력을 결정하며, 이것이 더스완이 가장 공들이는 부분입니다.
+            </p>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">THE SWAN</div>
+        <div class="footer-divider"></div>
+        <p class="footer-text">PLASTIC SURGERY CLINIC</p>
+    </footer>
+
+</body>
+</html>
